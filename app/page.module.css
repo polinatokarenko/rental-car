@@ -1,2 +1,45 @@
+.homeContainer {
+  display: flex;
+  min-height: calc(100vh - 68px);
+  background-image: image-set(
+    url("/heroimg.png") 1x,
+    url("/heroimg@2x.png") 2x
+  );
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
+.homeContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  gap: 40px;
+  margin: auto;
+  margin-bottom: 60px;
+  color: var(--white);
+}
 
+.homeTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.homeButton {
+  border: none;
+  cursor: pointer;
+  height: 44px;
+  border-radius: 12px;
+  padding: 12px 99px;
+  background: var(--light-blue);
+  color: var(--white);
+  transition-property: background;
+  transition-duration: 0.2s;
+}
+
+.homeButton:hover {
+  background: var(--dark-blue);
+}
