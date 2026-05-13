@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Manrope, Inter } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
 import "./globals.css";
+import css from "./layout.module.css";
 
 const manrope = Manrope({
-  variable: "--font-manrope",
+  variable: "--font-family",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  variable: "--second-family",
+  subsets: ["latin"],
+  weight: ["500"],
 });
 
 export const metadata: Metadata = {
@@ -19,8 +28,37 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
+      <body>
+        <header className={css.headerContainer}>
+          <Link href="/" aria-label="Go to homepage">
+            <Image
+              src="/logo.svg"
+              alt="RentalCar"
+              width={104}
+              height={16}
+              priority
+            />
+          </Link>
+          <nav>
+            <ul className={css.navList}>
+              <li className={css.navListElement}>
+                <Link href="/" aria-label="Go to homepage">
+                  Home
+                </Link>
+              </li>
+              <li className={css.navListElement}>
+                <Link href="/catalog" aria-label="Go to catalog page">
+                  Catalog
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

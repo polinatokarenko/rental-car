@@ -9,6 +9,7 @@
   --button-hover: #0B44CD;
   --light-blue: #00AAD4;
   --bg: #F5F5F5;
+  --dark-blue: #0095ba;
 }
 
 * {
@@ -32,7 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   background: var(--bg);
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-family), sans-serif;
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
@@ -66,4 +67,9 @@ button {
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
