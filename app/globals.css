@@ -1,13 +1,14 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --main: #101828;
+  --gray: #8D929A;
+  --gray-light: #DADDE1;
+  --badges: #F2F4F7;
+  --inputs: #F7F7F7;
+  --white: #FFFFFF;
+  --button: #3470FF;
+  --button-hover: #0B44CD;
+  --light-blue: #00AAD4;
+  --bg: #F5F5F5;
 }
 
 html {
@@ -40,10 +41,4 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
