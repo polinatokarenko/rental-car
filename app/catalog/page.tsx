@@ -1,14 +1,14 @@
 import { QueryClient, HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import CatalogClient from "./Catalog.client";
-import { getCars } from "@/lib/api/serverApi";
-import { SearchParams } from "@/types/params";
+import { getAvailableFilters, getCars } from "@/lib/api/serverApi";
+import type { SearchParams } from "@/types/params";
 
 type CatalogProps = {
-  params: SearchParams;
+  searchParams: SearchParams;
 };
 
-export default async function Catalog({ params }: CatalogProps) {
-  const { brand, price, minMileage, maxMileage, perPage, page } = await params;
+export default async function Catalog({ searchParams }: CatalogProps) {
+  const { brand, price, minMileage, maxMileage, perPage, page } = await searchParams;
 
   const queryClient = new QueryClient();
 
@@ -26,11 +26,16 @@ export default async function Catalog({ params }: CatalogProps) {
     queryFn: () => getCars(queryParams),
   });
 
+  await queryClient.prefetchQuery({
+    queryKey: ["filters"],
+    queryFn: () => getAvailableFilters(),
+  });
+
   const dehydratedState = dehydrate(queryClient);
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <CatalogClient />
+      <CatalogClient queryParams={queryParams} />
     </HydrationBoundary>
   );
 };

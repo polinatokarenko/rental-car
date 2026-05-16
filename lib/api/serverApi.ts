@@ -1,12 +1,15 @@
 import nextServer from "./api";
 import type { Car } from "@/types/car";
-import type { SearchParams } from "@/types/params";
+import type { FilterParams, SearchParams } from "@/types/params";
 import type { GetCarsResponse } from "@/types/responses";
 
-export const runtime = "nodejs";
+export async function getCars(searchParams: SearchParams): Promise<GetCarsResponse> {
+  const res = await nextServer.get<GetCarsResponse>("/cars", { params: searchParams });
+  return res.data;
+}
 
-export async function getCars(params: SearchParams): Promise<GetCarsResponse> {
-  const res = await nextServer.get<GetCarsResponse>("/cars", { params });
+export async function getAvailableFilters(): Promise<FilterParams> {
+  const res = await nextServer.get<FilterParams>("/cars/filters");
   return res.data;
 }
 

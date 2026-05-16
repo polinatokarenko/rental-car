@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import "./globals.css";
 import css from "./layout.module.css";
+import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 
 const manrope = Manrope({
   variable: "--font-family",
@@ -30,34 +31,36 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${manrope.variable} ${inter.variable}`}>
       <body>
-        <header className={css.headerContainer}>
-          <Link href="/" aria-label="Go to homepage">
-            <Image
-              src="/logo.svg"
-              alt="RentalCar"
-              width={104}
-              height={16}
-              priority
-            />
-          </Link>
-          <nav>
-            <ul className={css.navList}>
-              <li className={css.navListElement}>
-                <Link href="/" aria-label="Go to homepage">
-                  Home
-                </Link>
-              </li>
-              <li className={css.navListElement}>
-                <Link href="/catalog" aria-label="Go to catalog page">
-                  Catalog
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-        <main>
-          {children}
-        </main>
+        <TanStackProvider>
+          <header className={css.headerContainer}>
+            <Link href="/" aria-label="Go to homepage">
+              <Image
+                src="/logo.svg"
+                alt="RentalCar"
+                width={104}
+                height={16}
+                priority
+              />
+            </Link>
+            <nav>
+              <ul className={css.navList}>
+                <li className={css.navListElement}>
+                  <Link href="/" aria-label="Go to homepage">
+                    Home
+                  </Link>
+                </li>
+                <li className={css.navListElement}>
+                  <Link href="/catalog" aria-label="Go to catalog page">
+                    Catalog
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </header>
+          <main>
+            {children}
+          </main>
+        </TanStackProvider>
       </body>
     </html>
   );
