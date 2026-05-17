@@ -17,19 +17,22 @@ export async function getCarById(id: string): Promise<Car> {
   const res = await nextServer.get<Car>(`/cars/${id}`);
   return res.data;
 }
-interface createBookingRequestProps {
-  carId: string;
+
+interface createBookingRequestParamsProps {
+  id: string;
+}
+
+interface createBookingRequestDataProps {
   name: string;
   email: string;
   comment: string;
 }
 
-export async function createBookingRequest(params: createBookingRequestProps) {
-  const res = await nextServer.post<string>(`cars/${params.carId}/booking-requests`, {
-    name: params.name,
-    email: params.email,
-    comment: params.comment
-  });
+interface createBookingRequestResponse {
+  message: string;
+}
 
+export async function createBookingRequest({ id }: createBookingRequestParamsProps, data: createBookingRequestDataProps) {
+  const res = await nextServer.post<createBookingRequestResponse>(`/cars/${id}/booking-requests`, data);
   return res.data;
 }
