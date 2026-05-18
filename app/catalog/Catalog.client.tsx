@@ -76,6 +76,7 @@ export default function CatalogClient({ queryParams }: CatalogClientProps ) {
           <button type="button" onClick={onClear}>Clear filters</button>
         </div>
         <CarsList data={data} />
+        <button type="button">Load more</button>
       </div>
     </section>
   )
