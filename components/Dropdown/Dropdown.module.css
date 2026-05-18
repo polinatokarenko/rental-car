@@ -1,0 +1,52 @@
+.dropdownContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdownLabel {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 133%;
+    color: var(--gray);
+}
+
+.labelDropdownContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mainButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+    border-radius: 12px;
+    padding: 12px 16px;
+    min-width: 204px;
+    height: 44px;
+    background: var(--white);
+}
+
+.optionsListContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 272px;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+}
+
+.optionButton {
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--gray);
+}

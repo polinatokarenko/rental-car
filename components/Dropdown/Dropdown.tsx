@@ -1,5 +1,6 @@
 "use client"
 
+import css from "./Dropdown.module.css";
 import { useState } from "react";
 import type { SearchParams } from "@/types/params";
 
@@ -25,14 +26,31 @@ export default function Dropdown({ id, label, currentValue, options, onSetParam,
   }
 
   return (
-    <div>
-      <label htmlFor={id}>{label}</label>
-      <button id={id} onClick={onClick}>{currentValue ?? defaultButtonText}</button>
-        {isButtonClicked ? options.map((option) => (
-          <button type="button" key={option} value={option} onClick={() => optionSet(option, id)}>
+    <div className={css.dropdownContainer}>
+      <div className={css.labelDropdownContainer}>
+        <label className={css.dropdownLabel} htmlFor={id}>{label}</label>
+        <button className={css.mainButton} id={id} onClick={onClick}>
+          {currentValue ?? defaultButtonText}
+          {isButtonClicked
+          ?
+          <svg width={13} height={7} fill="var(--main)">
+            <use href="/icons/sprite.svg#icon-arrow-up"></use>
+          </svg>
+          :
+          <svg width={13} height={7} fill="var(--main)">
+            <use href="/icons/sprite.svg#icon-arrow-down"></use>
+          </svg>}
+        </button>
+      </div>
+      {isButtonClicked ? (
+        <div className={css.optionsListContainer}>
+          {options.map((option) => (
+          <button className={css.optionButton} type="button" key={option} value={option} onClick={() => optionSet(option, id)}>
             {option}
           </button>
-        )) : false}
+          ))}
+        </div>
+      ) : false}
     </div>
   );
 }

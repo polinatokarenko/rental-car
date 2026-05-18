@@ -1,0 +1,68 @@
+.catalogPageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 104px;
+}
+
+.filterSettingsContainer {
+    display: flex;
+    justify-content: center;
+    align-items:end;
+    gap: 16px;
+    margin-top: auto;
+}
+
+.searchButton {
+    font-family: var(--font-family);
+    line-height: 125%;
+    color: var(--white);
+    border-radius: 12px;
+    padding: 12px 51px;
+    min-width: 156px;
+    height: 44px;
+    background: var(--light-blue);
+    transition-property: background;
+    transition-duration: 0.2s;
+}
+
+.searchButton:hover {
+    background: var(--dark-blue);
+}
+
+.clearFiltersButton {
+    font-family: var(--font-family);
+    font-weight: 500;
+    line-height: 125%;
+    color: var(--gray);
+    min-width: 156px;
+    height: 20px;
+    background-color: transparent;
+}
+
+.filterSettingsClearButtonContainer {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.loadMoreButton {
+    font-family: var(--font-family);
+    line-height: 125%;
+    color: var(--main);
+    background-color: transparent;
+    border: 1px solid var(--light-blue);
+    border-radius: 12px;
+    padding: 12px 51px;
+    min-width: 156px;
+    height: 44px;
+    text-align: center;
+    transition-property: border;
+    transition-duration: 0.2s;
+}
+
+.loadMoreButton:hover {
+    border: 1px solid var(--dark-blue);
+}

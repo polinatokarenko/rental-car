@@ -1,0 +1,39 @@
+.carMileageContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.carMileageLabel {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 133%;
+    color: var(--gray);
+}
+
+.input {
+    width: 160px;
+    height: 44px;
+    background: var(--white);
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--main);
+    padding: 12px 24px;
+    outline: none;
+    border: none;
+}
+
+.input::placeholder {
+    color: var(--main);
+}
+
+.fromInput {
+    border-right: 1px solid var(--gray-light);
+    border-radius: 12px 0 0 12px;
+}
+
+.toInput {
+    border-radius: 0 12px 12px 0;
+}

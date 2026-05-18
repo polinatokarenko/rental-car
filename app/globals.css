@@ -67,9 +67,16 @@ button {
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
+  cursor: pointer;
+  outline: none;
+  border: none;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+section {
+  padding: 84px 120px 0px 120px;
 }

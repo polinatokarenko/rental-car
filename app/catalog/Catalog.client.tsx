@@ -1,6 +1,7 @@
 "use client"
-import { useQuery } from "@tanstack/react-query";
 
+import css from "./Catalog.module.css";
+import { useQuery } from "@tanstack/react-query";
 import Dropdown from "@/components/Dropdown/Dropdown"
 import CarMileageInputs from "@/components/CarMileageInputs/CarMileageInputs";
 import CarsList from "@/components/CarsList/CarsList";
@@ -66,18 +67,18 @@ export default function CatalogClient({ queryParams }: CatalogClientProps ) {
   }
 
   return (
-    <section>
-      <div>
-        <Dropdown id={'brand'} label={'Car brand'} currentValue={localParams.brand} options={brands} onSetParam={onSetParam} defaultButtonText={'Choose a brand'} />
-        <Dropdown id={'price'} label={'Price/1 hour'} currentValue={localParams.price ? `To $${localParams.price}` : undefined} options={prices} onSetParam={onSetParam} defaultButtonText={'Choose a price'} />
-        <CarMileageInputs minMileage={localParams.minMileage} maxMileage={localParams.maxMileage} onSetParam={onSetParam} />
-        <div>
-          <button type="button" onClick={onSearch}>Search</button>
-          <button type="button" onClick={onClear}>Clear filters</button>
+    <section className={css.catalogPageContainer}>
+      <div className={css.filterSettingsClearButtonContainer}>
+        <div className={css.filterSettingsContainer}>
+          <Dropdown id={'brand'} label={'Car brand'} currentValue={localParams.brand} options={brands} onSetParam={onSetParam} defaultButtonText={'Choose a brand'} />
+          <Dropdown id={'price'} label={'Price/1 hour'} currentValue={localParams.price ? `To $${localParams.price}` : undefined} options={prices} onSetParam={onSetParam} defaultButtonText={'Choose a price'} />
+          <CarMileageInputs minMileage={localParams.minMileage} maxMileage={localParams.maxMileage} onSetParam={onSetParam} />
+          <button className={css.searchButton} type="button" onClick={onSearch}>Search</button>
         </div>
-        <CarsList data={data} />
-        <button type="button">Load more</button>
+        <button className={css.clearFiltersButton} type="button" onClick={onClear}>Clear filters</button>
       </div>
+      <CarsList data={data} />
+      <button className={css.loadMoreButton} type="button">Load more</button>
     </section>
-  )
+  );
 }

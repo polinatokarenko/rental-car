@@ -1,3 +1,4 @@
+import css from "./CarMileageInputs.module.css";
 import { SearchParams } from "@/types/params";
 
 interface CarMileageInputsProps {
@@ -8,11 +9,11 @@ interface CarMileageInputsProps {
 
 export default function CarMileageInputs( {minMileage, maxMileage, onSetParam }: CarMileageInputsProps) {
     return (
-        <div>
-          <label>Car mileage / km</label>
+        <div className={css.carMileageContainer}>
+          <label className={css.carMileageLabel}>Car mileage / km</label>
           <div>
-            <input type="number" placeholder="From" value={minMileage ?? ''} onChange={(e) => {onSetParam('minMileage', e.target.value);}}/>
-            <input type="number" placeholder="To" value={maxMileage ?? ''} onChange={(e) => {onSetParam('maxMileage', e.target.value);}}/>
+            <input className={`${css.input} ${css.fromInput}`} type="number" placeholder="From" value={minMileage ?? ''} onChange={(e) => {onSetParam('minMileage', e.target.value);}}/>
+            <input className={`${css.input} ${css.toInput}`} type="number" placeholder="To" value={maxMileage ?? ''} onChange={(e) => {onSetParam('maxMileage', e.target.value);}}/>
           </div>
         </div>
     )
