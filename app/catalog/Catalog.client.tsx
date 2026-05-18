@@ -1,13 +1,14 @@
 "use client"
 import { useQuery } from "@tanstack/react-query";
 
-import Select from "@/components/Select/Select"
+import Dropdown from "@/components/Dropdown/Dropdown"
+import CarMileageInputs from "@/components/CarMileageInputs/CarMileageInputs";
+import CarsList from "@/components/CarsList/CarsList";
 import { getCars } from "@/lib/api/clientApi";
 import type { SearchParams } from "@/types/params";
 import { getAvailableFilters } from "@/lib/api/clientApi";
 import { keepPreviousData } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 
 type CatalogClientProps = {
@@ -41,47 +42,41 @@ export default function CatalogClient({ queryParams }: CatalogClientProps ) {
 
   //localParams
   const [localParams, setLocalParams] = useState<SearchParams>(queryParams);
-  const router = useRouter();
 
+  //settingLocalParams
   const onSetParam = (key: keyof SearchParams, value: string) => {
     setLocalParams(prev => ({ ...prev, [key]: value }));
   }
 
   //search
+  const router = useRouter();
+
   const onSearch = () => {
-    const params = new URLSearchParams(localParams as Record<string, string>);
+    const filteredParams = Object.fromEntries(
+      Object.entries(localParams).filter(([_, value]) => value !== '' && value !== undefined)
+    );
+    const params = new URLSearchParams(filteredParams as Record<string, string>);
     router.push('/catalog?' + params.toString())
   }
 
   //clearParams
   const onClear = () => {
     setLocalParams({});
-    setResetKey(prev => prev + 1);
-    setMileageFrom('');
-    setMileageTo('');
     router.push('/catalog');
   }
-
-  const [mileageFrom, setMileageFrom] = useState(queryParams.minMileage);
-  const [mileageTo, setMileageTo] = useState(queryParams.maxMileage);
-  const [resetKey, setResetKey] = useState(0);
 
   return (
     <section>
       <div>
-        <Select key={`brand-${resetKey}`} id={'brand'} label={'Car brand'} options={brands} onSetParam={onSetParam} defaultButtonText={'Choose a brand'}/>
-        <Select key={`price-${resetKey}`} id={'price'} label={'Price/1 hour'} options={prices} onSetParam={onSetParam} defaultButtonText={'Choose a price'} />
-          <div>
-            <label>Car mileage / km</label>
-            <div>
-              <input type="number" placeholder="From" value={mileageFrom} onChange={(e) => {onSetParam('minMileage', e.target.value); setMileageFrom(e.target.value);}}/>
-              <input type="number" placeholder="To" value={mileageTo} onChange={(e) => {onSetParam('maxMileage', e.target.value); setMileageTo(e.target.value);}}/>
-            </div>
-          </div>
+        <Dropdown id={'brand'} label={'Car brand'} currentValue={localParams.brand} options={brands} onSetParam={onSetParam} defaultButtonText={'Choose a brand'} />
+        <Dropdown id={'price'} label={'Price/1 hour'} currentValue={localParams.price ? `To $${localParams.price}` : undefined} options={prices} onSetParam={onSetParam} defaultButtonText={'Choose a price'} />
+        <CarMileageInputs minMileage={localParams.minMileage} maxMileage={localParams.maxMileage} onSetParam={onSetParam} />
+        <div>
           <button type="button" onClick={onSearch}>Search</button>
           <button type="button" onClick={onClear}>Clear filters</button>
+        </div>
+        <CarsList data={data} />
       </div>
-      {data?.cars.map((car) => <img key={car.id} src={car.img}></img>)}
     </section>
   )
 }
