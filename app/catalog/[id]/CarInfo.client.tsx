@@ -56,8 +56,8 @@ export default function CarInfoClient({ id }: CarInfoClientProps) {
                                 <li>Year: {data.year}</li>
                                 <li>Type: {data.type}</li>
                                 <li>Fuel Consumption: {data.fuelConsumption}</li>
-                                <li></li>
-                                <li></li>
+                                <li>Engine: {data.engine}</li>
+                                <li>Mileage: {data.mileage}</li>
                             </ul>
                         </div>
                     </div>
