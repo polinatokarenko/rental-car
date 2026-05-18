@@ -1,0 +1,97 @@
+.carsListContainer {
+    margin: 60px 0 48px 0;
+}
+
+.carsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    row-gap: 48px;
+    column-gap: 32px;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 16px;
+    width: 276px;
+    height: 464px;
+    background: var(--white);
+}
+
+.cardContentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+
+.carImage {
+    background: linear-gradient(180deg, rgba(18, 20, 23, 0.5) 0%, rgba(18, 20, 23, 0.5) 100%);
+    border-radius: 14px;
+    object-fit: cover;
+    object-position: left;
+}
+
+.carNameContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.carNameText {
+    line-height: 125%;
+}
+
+.carNameSpan {
+    color: var(--light-blue);
+}
+
+.carDetailsList {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 12px;
+    column-gap: 4px;
+    border-radius: 8px;
+    padding: 8px;
+    width: 244px;
+    height: auto;
+    background: var(--bg);
+}
+
+.carDetailsElement {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 133%;
+    color: var(--main);
+    padding-right: 6px;
+}
+
+.carDetailsElement:not(:last-child) {
+    border-right: 1px solid var(--gray-light);;
+    margin-right: 6px;
+}
+
+.readMoreButton {
+    border-radius: 12px;
+    padding: 12px 0px;
+    width: 244px;
+    height: 44px;
+    background: var(--light-blue);
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: var(--white);
+    transition-duration: background;
+    transition-duration: 0.2s;
+}
+
+.readMoreButton:hover {
+    background: var(--dark-blue);
+}

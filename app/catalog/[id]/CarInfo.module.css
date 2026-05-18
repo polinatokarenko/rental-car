@@ -1,0 +1,22 @@
+.pageContent {
+    display: flex;
+    gap: 32px
+}
+
+.carImg {
+    border-radius: 16px;
+    object-fit: cover;
+    object-position: left;
+}
+
+.carInfoContainer {
+    border-radius: 16px;
+    padding: 32px 24px;
+    width: 528px;
+    height: 968px;
+    background: var(--white);
+}
+
+.rentalConditionsList {
+    list-style-type: none;
+}

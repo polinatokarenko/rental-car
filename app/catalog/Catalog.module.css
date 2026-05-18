@@ -31,6 +31,13 @@
     background: var(--dark-blue);
 }
 
+.filterSettingsClearButtonContainer {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .clearFiltersButton {
     font-family: var(--font-family);
     font-weight: 500;
@@ -41,13 +48,9 @@
     background-color: transparent;
 }
 
-.filterSettingsClearButtonContainer {
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-    gap: 8px;
-}
 
+
+/**/
 .loadMoreButton {
     font-family: var(--font-family);
     line-height: 125%;
